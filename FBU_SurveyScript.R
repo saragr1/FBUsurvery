@@ -28,6 +28,7 @@ df$answers <- gsub("c\\(", "", df$answers)
 do.call("<-",df$answers(parameter_name, parameter_value))
 
 
+# Spitter opp [anserws] variabelen
 df %>%
   separate_rows(answers, sep = ",\\s+") %>%
   separate(answers, into = c("key", "value"), sep="=\\s+") %>%
@@ -37,12 +38,6 @@ df %>%
   view()
 
 
-
-
-data.frame(do.call("cbind", strsplit(as.character(df$answers), "==",
-                                     fixed = TRUE
-                                     ))) %>% 
-  view()
 
 
 
