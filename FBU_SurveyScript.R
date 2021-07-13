@@ -36,7 +36,7 @@ df1 <- df %>%
 # Arbeid videre
 ## 1. fjerne rare symboler og evetuelle bokstaver i verdiene til variablene.
 
-
+# test1,2,3
 
 
 
