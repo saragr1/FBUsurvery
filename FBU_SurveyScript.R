@@ -30,7 +30,10 @@ df1 <- df %>%
 # Rare tegn i variabelnavnet
 names(df1) <- gsub("\\=", "", names(df1))
 
+# Yes, vakkert! :-) 
 
+# Etter en kort inspeksjon er det enkelte variabler som har noen rare tegn og 
+# noen er kodet feil? Litt usikker på det siste.
 
 
 
