@@ -21,14 +21,11 @@ df$answers <- gsub("[\"]", "", df$answers)
 # Spitter opp [anserws] variabelen
 df1 <- df %>%
   separate_rows(answers, sep = ",\\s+") %>%
-  separate(answers, into = c("key", "value"), sep="=\\s+") %>%
+  separate(answers, into = c("key", "value"), sep=" ==\\s+") %>%
   mutate(key = na_if(key, "No Data")) %>%
-  pivot_wider(names_from = key, values_from = value) %>%
+  pivot_wider(names_from = key, values_from = value)
   #  select(-`NA`) %>% 
-  view()
-
-# Rare tegn i variabelnavnet
-names(df1) <- gsub("\\=", "", names(df1))
+  # view()
 
 # Yes, vakkert! :-) 
 
@@ -36,40 +33,8 @@ names(df1) <- gsub("\\=", "", names(df1))
 # noen er kodet feil? Litt usikker på det siste.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Arbeid videre
+## 1. fjerne rare symboler og evetuelle bokstaver i verdiene til variablene.
 
 
 
