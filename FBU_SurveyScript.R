@@ -52,7 +52,7 @@ sum(is.na(df1)) # 42058, tyder på at det er blitt NAs
 
 #### Fjerner ) etter verdier ####
 
-## Det er 116 stk ) etter verdier på noen variabler, slik 2) fordi de markerer slutten 
+## Det er 116 stk ) etter verdier på noen variabler, som feks slik 2), fordi de markerer slutten 
 ## på en list slik det stod i df
 df2 <- df1
 df2$hus1_1 <- gsub("\\)", "", paste(df2$hus1_1))
