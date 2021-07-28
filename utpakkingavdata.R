@@ -146,31 +146,22 @@ df2 <- subset(df2, select = -leiefritid_12_n)
 
 #### Gjør tall-variabler til as.numeric ####
 
-## Gjør variablene til numeric ved hjelp av indeksering (ikke den beste løsningen...)
-df2[2:140] <- sapply(df2[2:140], as.numeric)
-df2[142:148] <- sapply(df2[142:148], as.numeric)
-df2[150:163] <- sapply(df2[150:163], as.numeric)
-df2[165:166] <- sapply(df2[165:166], as.numeric)
-df2[168:206] <- sapply(df2[168:206], as.numeric)
-df2[208:220] <- sapply(df2[208:220], as.numeric)
-df2[222:227] <- sapply(df2[222:227], as.numeric)
-df2[229:244] <- sapply(df2[229:244], as.numeric)
-df2[246:279] <- sapply(df2[246:279], as.numeric)
-df2[281:292] <- sapply(df2[281:292], as.numeric)
-df2[294:302] <- sapply(df2[294:302], as.numeric)
-df2[304:351] <- sapply(df2[304:351], as.numeric)
-df2[353:372] <- sapply(df2[353:372], as.numeric)
-df2[374:405] <- sapply(df2[374:405], as.numeric)
-df2[407:410] <- sapply(df2[407:410], as.numeric)
-df2[412:423] <- sapply(df2[412:423], as.numeric)
+## Gjør alle variabler til numeric, med unntak av character-variabler 
+# (spesifiert under) ved hjelp av indeksering (ikke den beste løsningen...)
+df2[c(-1, -141, -149, -164, -167, -207, -221, -228, -245, -280, -293, -303, -352, 
+      -373, -406, -411)] <- sapply(df2[c(-1, -141, -149, -164, -167, -207, -221, 
+                                         -228, -245, -280, -293, -303, -352, 
+                                         -373, -406, -411)], as.numeric)
+# Warning message tilsvarer kolonne 360 og 362, men ikke farlig at det blir NAs
 
 
 #### Saving the new, tidy data frame ####
-save(df2, file = "questionnaire_tidy_dataset.R")
+dataset <- df2
+save(dataset, file = "questionnaire_tidy_dataset.Rdata")
 
 ## Sjekker at det funker å laste det inn
-rm(df2)
-load("questionnaire_tidy_dataset.R")
+rm(dataset)
+load("questionnaire_tidy_dataset.Rdata")
 
 
 #### Gjøremål ####
