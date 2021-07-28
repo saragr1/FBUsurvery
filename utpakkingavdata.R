@@ -109,6 +109,7 @@ df2$varigmøbler1_7_n <- gsub("c", "", df2$varigmøbler1_7_n)
 ## Ved3_3
 df2 <- df2 %>%
   separate(ved3_3, c("ved3_3_n", "ved4_3_n"))
+df2$ved3_3_n <- gsub("c", "", df2$ved3_3_n)
 
 ## Varigmøbler1_5
 df2 <- df2 %>%
@@ -134,25 +135,50 @@ df2$varigmøbler1_1_n <- gsub("c", "", df2$varigmøbler1_1_n)
 ## Ved3_2
 df2 <- df2 %>%
   separate(ved3_2, c("ved3_2_n", "ved4_2_n"))
+df2$ved3_2_n <- gsub("c", "", df2$ved3_2_n)
 
 ## Leiefritid_1
 df2 <- df2 %>%
   separate(leiefritid_1, c("leiefritid_1_n", "leiefritid_12_n"))
+df2$leiefritid_1_n <- gsub("c", "", df2$leiefritid_1_n)
+df2 <- subset(df2, select = -leiefritid_12_n)
 
 
+#### Gjør tall-variabler til as.numeric ####
 
-####  ####
-gsub("[[:punct:]]", "", df2)
-df3 <- as.data.frame(gsub("[[:punct:]]", "", as.matrix(df2)))
+## Gjør variablene til numeric ved hjelp av indeksering (ikke den beste løsningen...)
+df2[2:140] <- sapply(df2[2:140], as.numeric)
+df2[142:148] <- sapply(df2[142:148], as.numeric)
+df2[150:163] <- sapply(df2[150:163], as.numeric)
+df2[165:166] <- sapply(df2[165:166], as.numeric)
+df2[168:206] <- sapply(df2[168:206], as.numeric)
+df2[208:220] <- sapply(df2[208:220], as.numeric)
+df2[222:227] <- sapply(df2[222:227], as.numeric)
+df2[229:244] <- sapply(df2[229:244], as.numeric)
+df2[246:279] <- sapply(df2[246:279], as.numeric)
+df2[281:292] <- sapply(df2[281:292], as.numeric)
+df2[294:302] <- sapply(df2[294:302], as.numeric)
+df2[304:351] <- sapply(df2[304:351], as.numeric)
+df2[353:372] <- sapply(df2[353:372], as.numeric)
+df2[374:405] <- sapply(df2[374:405], as.numeric)
+df2[407:410] <- sapply(df2[407:410], as.numeric)
+df2[412:423] <- sapply(df2[412:423], as.numeric)
 
+
+#### Saving the new, tidy data frame ####
+save(df2, file = "questionnaire_tidy_dataset.R")
+
+## Sjekker at det funker å laste det inn
+rm(df2)
+load("questionnaire_tidy_dataset.R")
 
 
 #### Gjøremål ####
 # 1. Gjøre IOnumber til numeric |JA
 # 2. Fjerne NULL og erstatte med NA |JA
 # 3. Fjerne ) etter verdier i noen variabler i datasettet |JA
-# 4. Fjerne c og at det er to verdier i én celle | PÅGÅENDE
-# 5. Gjøre alle tallvariabler om til numeric 
+# 4. Fjerne c og at det er to verdier i én celle for enkelte variabler | JA
+# 5. Gjøre alle tallvariabler om til numeric | JA
 
 
 
